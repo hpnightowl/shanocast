@@ -9,18 +9,12 @@ Shanocast runs on Linux and is reproducible via a Nix Flake
 Get Nix and enable flakes, for example via the DetSys Nix installer
 
 ```
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-```
-
-Or if you prefer a single 21M~ file, get a statically compiled Nix binary
-
-```
 curl -L https://hydra.nixos.org/job/nix/master/buildStatic.x86_64-linux/latest/download-by-type/file/binary-dist > nix
 chmod +x ./nix
 ```
 
 ```bash
-$ nix run .#shanocast lo
+ ./nix  --extra-experimental-features nix-command  run .#shanocast lo
 ```
 
 the final argument `lo` specifies the network interface where the cast_receiver runs.
